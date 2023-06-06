@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://0c5s8lnry3cm"]
+
+[ext_resource type="Texture2D" uid="uid://b0fvxi707w3kq" path="res://assets/sprites/tank_weapon.png" id="1_i3ywj"]
+
+[node name="Weapon" type="Node2D"]
+
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_i3ywj")
+offset = Vector2(10, 0)

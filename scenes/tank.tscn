@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=3 uid="uid://binl02px6nfn6"]
+
+[ext_resource type="Script" path="res://scenes/tank.gd" id="1_32wu7"]
+[ext_resource type="Texture2D" uid="uid://cihn53tjb5npy" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
+[ext_resource type="PackedScene" uid="uid://0c5s8lnry3cm" path="res://scenes/weapon.tscn" id="3_m1eic"]
+
+[sub_resource type="Animation" id="Animation_bo23l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_edory"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_an5o2"]
+resource_name = "move"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_6ihje"]
+resource_name = "test"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pwk0e"]
+_data = {
+"RESET": SubResource("Animation_bo23l"),
+"idle": SubResource("Animation_edory"),
+"move": SubResource("Animation_an5o2"),
+"test": SubResource("Animation_6ihje")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iydn"]
+size = Vector2(26, 26)
+
+[node name="Tank" type="CharacterBody2D"]
+script = ExtResource("1_32wu7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pwk0e")
+}
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_pl8hv")
+hframes = 2
+
+[node name="Weapon" parent="." instance=ExtResource("3_m1eic")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+shape = SubResource("RectangleShape2D_5iydn")
