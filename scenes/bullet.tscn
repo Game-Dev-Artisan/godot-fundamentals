@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5nhjj8oj8k00"]
+
+[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_w5no8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54nke"]
+size = Vector2(3, 3)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jwvnd"]
+size = Vector2(3, 3)
+
+[node name="Bullet" type="Area2D"]
+z_index = -1
+z_as_relative = false
+script = ExtResource("1_w5no8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_54nke")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture = SubResource("PlaceholderTexture2D_jwvnd")
