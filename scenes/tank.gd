@@ -12,7 +12,6 @@ const ROTATE_SPEED = 20
 @onready var animation_player := $AnimationPlayer
 @onready var collider := $CollisionShape2D
 
-
 var direction: Vector2 = Vector2.RIGHT
 
 func _physics_process(delta):

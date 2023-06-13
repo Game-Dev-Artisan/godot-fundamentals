@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dts7spmsrfa7u" path="res://scenes/tank.tscn" id="1_046xy"]
 
 [node name="World" type="Node2D"]
+rotation = 0.000588424
 
 [node name="Tank" parent="." instance=ExtResource("1_046xy")]
 position = Vector2(302, 266)
