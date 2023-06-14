@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://binl02px6nfn6"]
+[gd_scene load_steps=10 format=3 uid="uid://dts7spmsrfa7u"]
 
 [ext_resource type="Script" path="res://scenes/tank.gd" id="1_32wu7"]
-[ext_resource type="Texture2D" uid="uid://cihn53tjb5npy" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
-[ext_resource type="PackedScene" uid="uid://0c5s8lnry3cm" path="res://scenes/weapon.tscn" id="3_m1eic"]
+[ext_resource type="Texture2D" uid="uid://blv2f3krb6k1a" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
+[ext_resource type="PackedScene" uid="uid://coypybknrhnoa" path="res://scenes/weapon.tscn" id="3_m1eic"]
 
 [sub_resource type="Animation" id="Animation_bo23l"]
 length = 0.001
@@ -77,8 +77,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iydn"]
 size = Vector2(26, 26)
 
-[node name="Tank" type="CharacterBody2D"]
+[node name="Tank" type="CharacterBody2D" node_paths=PackedStringArray("weapon")]
 script = ExtResource("1_32wu7")
+weapon = NodePath("Weapon")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
