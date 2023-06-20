@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3fa8kl8s3eom"
-path="res://.godot/imported/tank_weapon.png-59c3d3604b0c2b5353b35cce7f812b20.ctex"
+uid="uid://t3ybclrrpy23"
+path="res://.godot/imported/tank_body-preview1.png-ed3a8e989a0cab7fb0615e6c04b6601b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tank_weapon.png"
-dest_files=["res://.godot/imported/tank_weapon.png-59c3d3604b0c2b5353b35cce7f812b20.ctex"]
+source_file="res://assets/sprites/tank_body-preview1.png"
+dest_files=["res://.godot/imported/tank_body-preview1.png-ed3a8e989a0cab7fb0615e6c04b6601b.ctex"]
 
 [params]
 

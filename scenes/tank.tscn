@@ -1,10 +1,20 @@
+<<<<<<< HEAD
 [gd_scene load_steps=10 format=3 uid="uid://dts7spmsrfa7u"]
 
 [ext_resource type="Script" path="res://scenes/tank.gd" id="1_32wu7"]
 [ext_resource type="Texture2D" uid="uid://cihn53tjb5npy" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
+=======
+[gd_scene load_steps=9 format=3 uid="uid://dts7spmsrfa7u"]
+
+[ext_resource type="Texture2D" uid="uid://bvsc8hvge4iol" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
+[ext_resource type="Script" path="res://scenes/tank.gd" id="1_wjan8"]
+>>>>>>> 43299b27073480f034b946c33ed9faa1cbb731a9
 [ext_resource type="PackedScene" uid="uid://coypybknrhnoa" path="res://scenes/weapon.tscn" id="3_m1eic"]
 
-[sub_resource type="Animation" id="Animation_bo23l"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ls1n"]
+size = Vector2(26, 26)
+
+[sub_resource type="Animation" id="Animation_6sql1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -19,7 +29,7 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_edory"]
+[sub_resource type="Animation" id="Animation_rdmf3"]
 resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -34,7 +44,7 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_an5o2"]
+[sub_resource type="Animation" id="Animation_ng8hp"]
 resource_name = "move"
 length = 0.2
 loop_mode = 1
@@ -51,27 +61,11 @@ tracks/0/keys = {
 "values": [0, 1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_6ihje"]
-resource_name = "test"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BodySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pwk0e"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_61lcn"]
 _data = {
-"RESET": SubResource("Animation_bo23l"),
-"idle": SubResource("Animation_edory"),
-"move": SubResource("Animation_an5o2"),
-"test": SubResource("Animation_6ihje")
+"RESET": SubResource("Animation_6sql1"),
+"idle": SubResource("Animation_rdmf3"),
+"move": SubResource("Animation_ng8hp")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iydn"]
@@ -95,5 +89,9 @@ hframes = 2
 tank = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
-shape = SubResource("RectangleShape2D_5iydn")
+shape = SubResource("RectangleShape2D_6ls1n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_61lcn")
+}
