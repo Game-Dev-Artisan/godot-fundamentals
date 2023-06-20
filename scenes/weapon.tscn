@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://coypybknrhnoa"]
 
 [ext_resource type="Script" path="res://scenes/weapon.gd" id="1_58m6j"]
-[ext_resource type="Texture2D" uid="uid://b3fa8kl8s3eom" path="res://assets/sprites/tank_weapon.png" id="1_i3ywj"]
+[ext_resource type="Texture2D" uid="uid://b0fvxi707w3kq" path="res://assets/sprites/tank_weapon.png" id="1_i3ywj"]
 [ext_resource type="PackedScene" uid="uid://edj4pane8x2i" path="res://scenes/bullet.tscn" id="2_6udrb"]
 
 [node name="Weapon" type="Node2D"]

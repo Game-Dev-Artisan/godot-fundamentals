@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ehkhruitm7lu"]
+
+[ext_resource type="Texture2D" uid="uid://vxowcyq3a47u" path="res://assets/sprites/crate.png" id="1_5ig23"]
+[ext_resource type="Script" path="res://scenes/crate.gd" id="1_a0r8h"]
+[ext_resource type="PackedScene" uid="uid://cb5jay2ubyfes" path="res://scenes/pickup.tscn" id="2_xe3bo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3m8n"]
+size = Vector2(16, 16)
+
+[node name="Crate" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 61
+linear_velocity = Vector2(1, 1)
+linear_damp = 100.0
+angular_damp = 100.0
+script = ExtResource("1_a0r8h")
+PICKUP_SCENE = ExtResource("2_xe3bo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5ig23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f3m8n")

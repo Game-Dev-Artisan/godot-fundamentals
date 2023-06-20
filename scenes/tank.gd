@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Tank
 
 const SPEED = 64.0
 const TURN_SPEED = 2
@@ -12,6 +13,10 @@ const ROTATE_SPEED = 20
 
 
 var direction := Vector2.RIGHT
+
+func collect(pickup):
+	pass
+	
 
 func _physics_process(delta):
 	var input_direction := Input.get_vector("turn_left", "turn_right", "move_backward", "move_forward")

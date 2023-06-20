@@ -1,15 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://edj4pane8x2i"]
 
-[sub_resource type="GDScript" id="GDScript_pf2xy"]
-script/source = "extends Area2D
-
-const SPEED = 500
-
-var direction: Vector2 = Vector2()
-
-func _physics_process(delta):
-	position += direction.normalized() * SPEED * delta
-"
+[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_kllqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyyst"]
 size = Vector2(3, 3)
@@ -18,10 +9,15 @@ size = Vector2(3, 3)
 size = Vector2(3, 3)
 
 [node name="Bullet" type="Area2D"]
-script = SubResource("GDScript_pf2xy")
+collision_layer = 16
+collision_mask = 44
+script = ExtResource("1_kllqh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_eyyst")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_qmw7w")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
