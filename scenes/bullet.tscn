@@ -11,6 +11,8 @@ size = Vector2(3, 3)
 [node name="Bullet" type="Area2D"]
 z_index = -1
 z_as_relative = false
+collision_layer = 16
+collision_mask = 44
 script = ExtResource("1_w5no8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,3 +21,6 @@ shape = SubResource("RectangleShape2D_54nke")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 texture = SubResource("PlaceholderTexture2D_jwvnd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

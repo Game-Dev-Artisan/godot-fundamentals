@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dts7spmsrfa7u"]
 
-[ext_resource type="Texture2D" uid="uid://bvsc8hvge4iol" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
+[ext_resource type="Texture2D" uid="uid://blv2f3krb6k1a" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
 [ext_resource type="Script" path="res://scenes/tank.gd" id="1_wjan8"]
 [ext_resource type="PackedScene" uid="uid://coypybknrhnoa" path="res://scenes/weapon.tscn" id="3_m1eic"]
 
@@ -62,6 +62,7 @@ _data = {
 }
 
 [node name="Tank" type="CharacterBody2D" node_paths=PackedStringArray("weapon")]
+collision_mask = 4
 script = ExtResource("1_wjan8")
 weapon = NodePath("Weapon")
 

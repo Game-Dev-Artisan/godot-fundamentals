@@ -59,6 +59,19 @@ weapon_fire={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Collectable"
+2d_physics/layer_3="World"
+2d_physics/layer_4="Destructables"
+2d_physics/layer_5="Weapons"
+2d_physics/layer_6="Enemies"
+
+[physics]
+
+2d/default_gravity_vector=Vector2(2.08165e-12, 2.08165e-12)
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
