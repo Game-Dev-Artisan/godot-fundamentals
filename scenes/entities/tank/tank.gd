@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name Tank
 
+signal collected(pickup)
+signal reloaded()
+signal reload_progress(progress)
+
 const SPEED = 64.0
 const TURN_SPEED = 2
 const ROTATE_SPEED = 20
@@ -14,8 +18,14 @@ const ROTATE_SPEED = 20
 
 var direction := Vector2.RIGHT
 
+
+func _ready():
+	weapon.reloaded.connect(func (): reloaded.emit())
+	weapon.reload_progress.connect(func (progress): reload_progress.emit(progress))
+	
+
 func collect(pickup):
-	pass
+	collected.emit(pickup)
 	
 
 func _physics_process(delta):

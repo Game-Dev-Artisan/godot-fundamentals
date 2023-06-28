@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://45iww3bncu36"]
+[gd_scene load_steps=5 format=3 uid="uid://45iww3bncu36"]
 
-[node name="game" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://ce828qs48cc2j" path="res://scenes/world/world.tscn" id="1_5wrib"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_6uqpm"]
+[ext_resource type="PackedScene" uid="uid://dts7spmsrfa7u" path="res://scenes/entities/tank/tank.tscn" id="2_cvwbq"]
+[ext_resource type="PackedScene" uid="uid://bi8jj3iskqkxm" path="res://scenes/ui/ui.tscn" id="3_y1hlu"]
+
+[node name="game" type="Node2D" node_paths=PackedStringArray("tank", "ui")]
+script = ExtResource("1_6uqpm")
+tank = NodePath("World/Tank")
+ui = NodePath("UILayer")
+
+[node name="World" parent="." instance=ExtResource("1_5wrib")]
+
+[node name="Tank" parent="World" node_paths=PackedStringArray("weapon") instance=ExtResource("2_cvwbq")]
+position = Vector2(234.114, 192.862)
+rotation = -0.000588424
+weapon = NodePath("../Tank/Weapon")
+
+[node name="UILayer" parent="." instance=ExtResource("3_y1hlu")]

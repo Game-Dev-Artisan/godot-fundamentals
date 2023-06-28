@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce828qs48cc2j"]
+[gd_scene load_steps=6 format=3 uid="uid://ce828qs48cc2j"]
 
-[ext_resource type="PackedScene" uid="uid://dts7spmsrfa7u" path="res://scenes/tank.tscn" id="1_046xy"]
-[ext_resource type="PackedScene" uid="uid://csc2bo4mx1qw" path="res://scenes/wall.tscn" id="2_4fwtg"]
-[ext_resource type="PackedScene" uid="uid://cidops07havv0" path="res://scenes/crate.tscn" id="3_jam2w"]
+[ext_resource type="PackedScene" uid="uid://csc2bo4mx1qw" path="res://scenes/entities/world/wall.tscn" id="2_4fwtg"]
+[ext_resource type="PackedScene" uid="uid://cidops07havv0" path="res://scenes/entities/world/crate.tscn" id="3_jam2w"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_h3k23"]
 resource_name = "walls"
@@ -18,9 +17,6 @@ sources/1 = SubResource("TileSetScenesCollectionSource_wsid7")
 
 [node name="World" type="Node2D"]
 rotation = 0.000588424
-
-[node name="Tank" parent="." instance=ExtResource("1_046xy")]
-position = Vector2(302, 266)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wx7dr")

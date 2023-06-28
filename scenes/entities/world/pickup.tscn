@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dppf8lq0bkh3"]
 
-[ext_resource type="Script" path="res://scenes/pickup.gd" id="1_gmmg0"]
-[ext_resource type="Texture2D" uid="uid://32ppvmi7cvcs" path="res://assets/sprites/pickups.png" id="1_ran8c"]
+[ext_resource type="Script" path="res://scenes/entities/world/pickup.gd" id="1_gmmg0"]
+[ext_resource type="Texture2D" uid="uid://bherylwk6a8cx" path="res://assets/sprites/pickups.png" id="1_ran8c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yi0oo"]
 size = Vector2(8, 8)
