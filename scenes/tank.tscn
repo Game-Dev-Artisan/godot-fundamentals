@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dts7spmsrfa7u"]
+[gd_scene load_steps=10 format=3 uid="uid://dts7spmsrfa7u"]
 
-[ext_resource type="Texture2D" uid="uid://blv2f3krb6k1a" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
-[ext_resource type="Script" path="res://scenes/tank.gd" id="1_wjan8"]
+[ext_resource type="Script" path="res://scenes/tank.gd" id="1_32wu7"]
+[ext_resource type="Texture2D" uid="uid://cihn53tjb5npy" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
 [ext_resource type="PackedScene" uid="uid://coypybknrhnoa" path="res://scenes/weapon.tscn" id="3_m1eic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ls1n"]
@@ -66,11 +66,17 @@ collision_mask = 4
 script = ExtResource("1_wjan8")
 weapon = NodePath("Weapon")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pwk0e")
+}
+
 [node name="BodySprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_pl8hv")
 hframes = 2
 
-[node name="Weapon" parent="." instance=ExtResource("3_m1eic")]
+[node name="Weapon" parent="." node_paths=PackedStringArray("tank") instance=ExtResource("3_m1eic")]
+tank = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6ls1n")
