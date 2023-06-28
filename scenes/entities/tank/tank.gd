@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name Tank
 
+signal collected(collectable)
+signal reloaded()
+signal reload_progress(progress)
+
 const SPEED = 64.0
 const TURN_SPEED = 2
 const ROTATE_SPEED = 20
@@ -13,6 +17,11 @@ const ROTATE_SPEED = 20
 @onready var collider := $CollisionShape2D
 
 var direction: Vector2 = Vector2.RIGHT
+
+func _ready():
+	weapon.reloaded.connect(func (): reloaded.emit())
+	weapon.reload_progress.connect(func(progress): reload_progress.emit(progress))
+	
 
 func _physics_process(delta):
 	# Calculate a vector based on our input actions mapped on 2 axis
@@ -40,3 +49,7 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("weapon_fire"):
 		weapon.fire()
+		
+
+func collect(collectable):
+	collected.emit(collectable)

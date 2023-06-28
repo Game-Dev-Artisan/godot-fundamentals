@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://0ck0mnhnjt8m"]
+
+[ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_tpnf0"]
+[ext_resource type="Texture2D" uid="uid://dnjq3tdmqb3pn" path="res://assets/sprites/ammo_ui_icon.png" id="2_kloyc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2ilm"]
+atlas = ExtResource("2_kloyc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tmu8"]
+atlas = ExtResource("2_kloyc")
+region = Rect2(0, 16, 16, 16)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_tpnf0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ReloadProgress" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_l2ilm")
+texture_progress = SubResource("AtlasTexture_7tmu8")

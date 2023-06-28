@@ -1,6 +1,9 @@
 extends Node2D
 class_name Weapon
 
+signal reloaded()
+signal reload_progress(progress)
+
 enum STATES { READY, FIRING, RELOADING }
 
 @export var BULLET_SCENE: PackedScene
@@ -9,6 +12,11 @@ enum STATES { READY, FIRING, RELOADING }
 
 var can_fire: bool
 var state: STATES = STATES.READY
+
+func _process(delta):
+	if !reload_timer.is_stopped():
+		reload_progress.emit(1 - (reload_timer.time_left / reload_timer.wait_time))
+		
 
 func _ready():
 	change_state(STATES.READY)
@@ -36,3 +44,4 @@ func fire():
 
 func _on_reload_timer_timeout():
 	change_state(STATES.READY)
+	reloaded.emit()

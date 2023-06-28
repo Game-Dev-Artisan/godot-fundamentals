@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx8jlsfrpk7h4"]
+
+[ext_resource type="PackedScene" uid="uid://ce828qs48cc2j" path="res://scenes/world/world.tscn" id="1_2mp7s"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_uu6mj"]
+[ext_resource type="PackedScene" uid="uid://dts7spmsrfa7u" path="res://scenes/entities/tank/tank.tscn" id="2_21h7o"]
+[ext_resource type="PackedScene" uid="uid://0ck0mnhnjt8m" path="res://scenes/ui/ui.tscn" id="4_uclr4"]
+
+[node name="game" type="Node2D" node_paths=PackedStringArray("tank", "ui")]
+script = ExtResource("1_uu6mj")
+tank = NodePath("Tank")
+ui = NodePath("UI")
+
+[node name="World" parent="." instance=ExtResource("1_2mp7s")]
+
+[node name="Tank" parent="." instance=ExtResource("2_21h7o")]
+position = Vector2(269, 215)
+
+[node name="UI" parent="." instance=ExtResource("4_uclr4")]

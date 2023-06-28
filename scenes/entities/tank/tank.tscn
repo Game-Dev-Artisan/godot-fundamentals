@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dts7spmsrfa7u"]
 
 [ext_resource type="Texture2D" uid="uid://blv2f3krb6k1a" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
-[ext_resource type="Script" path="res://scenes/tank.gd" id="1_wjan8"]
-[ext_resource type="PackedScene" uid="uid://coypybknrhnoa" path="res://scenes/weapon.tscn" id="3_m1eic"]
+[ext_resource type="Script" path="res://scenes/entities/tank/tank.gd" id="1_wjan8"]
+[ext_resource type="PackedScene" uid="uid://coypybknrhnoa" path="res://scenes/entities/tank/weapon/weapon.tscn" id="3_m1eic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ls1n"]
 size = Vector2(26, 26)
