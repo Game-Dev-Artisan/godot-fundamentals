@@ -23,7 +23,7 @@ window/stretch/mode="viewport"
 
 [dotnet]
 
-project/assembly_name="Getting Started with Godot - Godot Fundamentals"
+project/assembly_name="Godot Fundamentals"
 
 [input]
 

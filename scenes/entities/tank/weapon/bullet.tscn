@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5nhjj8oj8k00"]
+[gd_scene load_steps=4 format=3 uid="uid://edj4pane8x2i"]
 
 [ext_resource type="Script" path="res://scenes/entities/tank/weapon/bullet.gd" id="1_w5no8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_54nke"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyyst"]
 size = Vector2(3, 3)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jwvnd"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qmw7w"]
 size = Vector2(3, 3)
 
 [node name="Bullet" type="Area2D"]
@@ -16,11 +16,11 @@ collision_mask = 44
 script = ExtResource("1_w5no8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_54nke")
+shape = SubResource("RectangleShape2D_eyyst")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-texture = SubResource("PlaceholderTexture2D_jwvnd")
+texture = SubResource("PlaceholderTexture2D_qmw7w")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

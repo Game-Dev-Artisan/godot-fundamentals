@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://scenes/entities/tank/weapon/weapon.gd" id="1_55a5j"]
 [ext_resource type="Texture2D" uid="uid://b3fa8kl8s3eom" path="res://assets/sprites/tank_weapon.png" id="1_i3ywj"]
-[ext_resource type="PackedScene" uid="uid://c5nhjj8oj8k00" path="res://scenes/entities/tank/weapon/bullet.tscn" id="2_12stb"]
+[ext_resource type="PackedScene" uid="uid://edj4pane8x2i" path="res://scenes/entities/tank/weapon/bullet.tscn" id="2_fnne4"]
 [ext_resource type="AudioStream" uid="uid://cpcfvfau3eljt" path="res://assets/audio/sfx/fire.wav" id="4_rv4va"]
 
 [node name="Weapon" type="Node2D"]
 z_index = 1
 z_as_relative = false
 script = ExtResource("1_55a5j")
-BULLET_SCENE = ExtResource("2_12stb")
+BULLET_SCENE = ExtResource("2_fnne4")
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_i3ywj")
