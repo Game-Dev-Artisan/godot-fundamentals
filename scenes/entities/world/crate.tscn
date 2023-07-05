@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cidops07havv0"]
+[gd_scene load_steps=6 format=3 uid="uid://cidops07havv0"]
 
 [ext_resource type="Texture2D" uid="uid://mibqiq4pyik1" path="res://assets/sprites/crate.png" id="1_l2ewp"]
 [ext_resource type="Script" path="res://scenes/entities/world/crate.gd" id="1_pbr4b"]
 [ext_resource type="PackedScene" uid="uid://dppf8lq0bkh3" path="res://scenes/entities/world/pickup.tscn" id="2_my3g4"]
+[ext_resource type="AudioStream" uid="uid://dn5om87qntguw" path="res://assets/audio/sfx/crate_break.wav" id="4_sg48h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myn2b"]
 size = Vector2(16, 16)
@@ -21,3 +22,7 @@ texture = ExtResource("1_l2ewp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_myn2b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sg48h")
+bus = &"SFX"
