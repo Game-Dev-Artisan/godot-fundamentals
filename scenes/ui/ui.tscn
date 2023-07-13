@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://0ck0mnhnjt8m"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_tpnf0"]
-[ext_resource type="Texture2D" uid="uid://dnjq3tdmqb3pn" path="res://assets/sprites/ammo_ui_icon.png" id="2_kloyc"]
+[ext_resource type="Texture2D" uid="uid://dgjojsor4s42n" path="res://assets/sprites/ammo_ui_icon.png" id="2_kloyc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2ilm"]
 atlas = ExtResource("2_kloyc")
@@ -109,7 +109,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
-value = 1.0
 
 [node name="SFXLabel" type="Label" parent="Control/Menu/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
