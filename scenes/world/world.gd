@@ -35,3 +35,16 @@ static func get_custom_data_at(position: Vector2, custom_data_name: String) -> V
 static func get_gradient_at(position: Vector2) -> GradientTexture1D:
 	var tile_type = get_custom_data_at(position, "tile_type")
 	return _instance.tile_particle_ramps.get(tile_type, null)
+	
+	
+static func get_closest_crate_to(position: Vector2) -> Crate:
+	var closest: Crate = null
+	var closest_distance = INF
+	for child in _instance.tile_map.get_children():
+		if child is Crate:
+			var dist = position.distance_to(child.position)
+			if !closest or (dist < closest_distance):
+				closest = child
+				closest_distance = dist
+				
+	return closest

@@ -6,15 +6,20 @@ class_name UI
 @onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
 @onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
 @onready var menu = %Menu
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+static var _instance: UI = null
 
 var score = 0:
 	set(new_score):
 		score = new_score
 		_update_score_label()
 		
-		
+var letterbox_open := false
+	
 func _ready():
 	_update_score_label()
+	_instance = self if _instance == null else _instance
 		
 		
 func _input(event):
@@ -47,3 +52,15 @@ func _on_music_slider_value_changed(value):
 func _on_sfx_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(SFX_BUS_ID, linear_to_db(value))
 	AudioServer.set_bus_mute(SFX_BUS_ID, value < .05)
+	
+	
+static func open_letterbox() -> void:
+	if !_instance.letterbox_open:
+		_instance.animation_player.play("open_letterbox")
+		_instance.letterbox_open = true
+		
+		
+static func close_letterbox() -> void:
+	if _instance.letterbox_open:
+		_instance.animation_player.play_backwards("open_letterbox")
+		_instance.letterbox_open = false

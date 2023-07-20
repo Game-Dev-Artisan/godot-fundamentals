@@ -32,6 +32,7 @@ var in_water := false:
 			else:
 				audio_player.stream = default_drive_audio
 		in_water = value
+var has_control := true
 
 func _ready():
 	weapon.reloaded.connect(func (): reloaded.emit())
@@ -43,6 +44,8 @@ func collect(pickup):
 	
 
 func _physics_process(delta):
+	if !has_control:
+		return
 	var input_direction := Input.get_vector("turn_left", "turn_right", "move_backward", "move_forward")
 	if input_direction.x != 0:
 		# Rotate direction based on our input vector and apply turn speed
@@ -78,10 +81,13 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# Apply Weapon Rotation
-	var weapon_rotate_direction := Input.get_axis("rotate_weapon_left", "rotate_weapon_right")
-	weapon.rotation_degrees += (weapon_rotate_direction * ROTATE_SPEED * delta * PI)
+	var mouse_pos = get_local_mouse_position()
+	var new_transform = weapon.transform.looking_at(mouse_pos)
+	weapon.transform = weapon.transform.interpolate_with(new_transform, ROTATE_SPEED * delta)
 	
 	
 func _input(event):
+	if !has_control:
+		return
 	if event.is_action_pressed("weapon_fire"):
 		weapon.fire()

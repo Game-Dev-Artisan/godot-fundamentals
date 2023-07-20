@@ -1,0 +1,48 @@
+extends Camera2D
+class_name Camera
+
+enum MODES { TARGET, TARGET_MOUSE_BLENDED }
+
+@export var target: Node = null
+@export var mode: MODES = MODES.TARGET_MOUSE_BLENDED
+@export var MAX_DISTANCE: float = 50
+@export var SMOOTH_SPEED: float = 1
+
+var target_position := Vector2.INF
+var fallback_target: Node = null
+
+func _ready():
+	fallback_target = target
+	
+	
+func _process(delta):
+	match(mode):
+		MODES.TARGET:
+			if target:
+				target_position = target.position
+		MODES.TARGET_MOUSE_BLENDED:
+			if target:
+				var mouse_pos := get_local_mouse_position()
+				target_position = (target.position + mouse_pos)
+				target_position.x = clamp(target_position.x, -MAX_DISTANCE + target.position.x, MAX_DISTANCE + target.position.x)
+				target_position.y = clamp(target_position.y, -MAX_DISTANCE + target.position.y, MAX_DISTANCE + target.position.y)
+				
+	if target_position != Vector2.INF:
+		position = lerp(position, target_position, SMOOTH_SPEED * delta)
+		
+		
+func change_mode(new_mode: MODES) -> void:
+	mode = new_mode
+	
+	
+func change_target(new_target: Node) -> void:
+	if new_target:
+		if target and target.tree_exiting.is_connected(_clear_target):
+			target.tree_exiting.disconnect(_clear_target)
+		target = new_target
+		new_target.tree_exiting.connect(_clear_target)
+		
+		
+func _clear_target() -> void:
+	target = fallback_target
+	change_mode(MODES.TARGET_MOUSE_BLENDED)

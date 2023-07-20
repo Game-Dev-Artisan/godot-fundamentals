@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=960
 window/size/viewport_height=544
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
