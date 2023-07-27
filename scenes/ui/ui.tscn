@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://0ck0mnhnjt8m"]
+[gd_scene load_steps=13 format=3 uid="uid://0ck0mnhnjt8m"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_tpnf0"]
 [ext_resource type="Texture2D" uid="uid://dgjojsor4s42n" path="res://assets/sprites/ammo_ui_icon.png" id="2_kloyc"]
 [ext_resource type="Script" path="res://scenes/ui/cursor_manager.gd" id="3_hbg7t"]
+[ext_resource type="PackedScene" uid="uid://daxygoynvdyya" path="res://scenes/ui/menus/game_menu.tscn" id="3_n7rc7"]
+[ext_resource type="PackedScene" uid="uid://ossrp4y0wtt2" path="res://scenes/ui/menus/main_menu.tscn" id="3_sp6m1"]
 [ext_resource type="Texture2D" uid="uid://brxvf2ftq2yn1" path="res://assets/sprites/cursor.png" id="4_mf07r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2ilm"]
@@ -12,6 +14,45 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7tmu8"]
 atlas = ExtResource("2_kloyc")
 region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="Animation" id="Animation_ysutg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Letterbox/TopRect:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Letterbox/BottomRect:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Transition:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_h3yer"]
 resource_name = "open_letterbox"
@@ -40,40 +81,30 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(0, 64)]
 }
 
-[sub_resource type="Animation" id="Animation_ysutg"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_hgyk1"]
+resource_name = "screen_transition"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Letterbox/TopRect:custom_minimum_size")
+tracks/0/path = NodePath("Control/Transition:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Letterbox/BottomRect:custom_minimum_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nwxsy"]
 _data = {
 "RESET": SubResource("Animation_ysutg"),
-"open_letterbox": SubResource("Animation_h3yer")
+"open_letterbox": SubResource("Animation_h3yer"),
+"screen_transition": SubResource("Animation_hgyk1")
 }
 
 [node name="UI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_tpnf0")
 
 [node name="Control" type="Control" parent="."]
@@ -122,67 +153,10 @@ fill_mode = 3
 texture_under = SubResource("AtlasTexture_l2ilm")
 texture_progress = SubResource("AtlasTexture_7tmu8")
 
-[node name="Menu" type="Control" parent="Control"]
+[node name="Menu" parent="Control" instance=ExtResource("3_n7rc7")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control/Menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0705882, 0.0705882, 0.0705882, 0.780392)
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/Menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 256
-theme_override_constants/margin_right = 256
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Menu/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="Control/Menu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/h_separation = 16
-columns = 2
-
-[node name="MusicLabel" type="Label" parent="Control/Menu/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Music"
-
-[node name="MusicSlider" type="HSlider" parent="Control/Menu/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.05
-
-[node name="SFXLabel" type="Label" parent="Control/Menu/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "SFX"
-
-[node name="SFXSlider" type="HSlider" parent="Control/Menu/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.05
-value = 1.0
 
 [node name="Letterbox" type="Control" parent="Control"]
 layout_mode = 1
@@ -191,6 +165,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TopRect" type="ColorRect" parent="Control/Letterbox"]
 unique_name_in_owner = true
@@ -211,6 +186,22 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 1)
 
+[node name="MainMenu" parent="Control" instance=ExtResource("3_sp6m1")]
+unique_name_in_owner = true
+layout_mode = 1
+mouse_filter = 1
+
+[node name="Transition" type="ColorRect" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_nwxsy")
@@ -221,5 +212,6 @@ script = ExtResource("3_hbg7t")
 base_window_size = Vector2(960, 544)
 cursor_texture = ExtResource("4_mf07r")
 
-[connection signal="value_changed" from="Control/Menu/MarginContainer/VBoxContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="Control/Menu/MarginContainer/VBoxContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="main_menu" from="Control/Menu" to="." method="_on_menu_main_menu"]
+[connection signal="return_to_game" from="Control/Menu" to="." method="_on_menu_return_to_game"]
+[connection signal="start_game" from="Control/MainMenu" to="." method="_on_main_menu_start_game"]

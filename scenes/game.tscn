@@ -5,34 +5,35 @@
 [ext_resource type="PackedScene" uid="uid://dts7spmsrfa7u" path="res://scenes/entities/tank/tank.tscn" id="2_21h7o"]
 [ext_resource type="PackedScene" uid="uid://0ck0mnhnjt8m" path="res://scenes/ui/ui.tscn" id="4_uclr4"]
 [ext_resource type="AudioStream" uid="uid://jt1uonaoisg" path="res://assets/audio/music/Rolemusic - The White Frame.mp3" id="5_c1nwv"]
-[ext_resource type="Script" path="res://scenes/camera.gd" id="6_hjgyj"]
+[ext_resource type="Script" path="res://scenes/ui/camera.gd" id="6_khat2"]
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("tank", "ui")]
+[node name="game" type="Node2D" node_paths=PackedStringArray("ui")]
 script = ExtResource("1_uu6mj")
-tank = NodePath("Tank")
+TankScene = ExtResource("2_21h7o")
+WorldScene = ExtResource("1_2mp7s")
 ui = NodePath("UI")
 
-[node name="World" parent="." instance=ExtResource("1_2mp7s")]
-
-[node name="Tank" parent="." instance=ExtResource("2_21h7o")]
-position = Vector2(1464, 844)
-
 [node name="UI" parent="." instance=ExtResource("4_uclr4")]
+process_mode = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("5_c1nwv")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1452, 438)
-zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
 limit_right = 3056
 limit_bottom = 1586
 editor_draw_limits = true
-script = ExtResource("6_hjgyj")
-target = NodePath("../Tank")
+script = ExtResource("6_khat2")
 SMOOTH_SPEED = 2.0
+
+[connection signal="menu_closed" from="UI" to="." method="_on_ui_menu_closed"]
+[connection signal="menu_opened" from="UI" to="." method="_on_ui_menu_opened"]
+[connection signal="quit_to_menu" from="UI" to="." method="_on_ui_quit_to_menu"]
+[connection signal="start_game" from="UI" to="." method="_on_ui_start_game"]

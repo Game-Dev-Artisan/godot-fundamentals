@@ -3,16 +3,16 @@ class_name Camera
 
 enum MODES { TARGET, TARGET_MOUSE_BLENDED }
 
-@export var target: Node = null
+@export var target: Node = null:
+	set(tar):
+		fallback_target = tar if fallback_target == null else fallback_target
+		target = tar
 @export var mode: MODES = MODES.TARGET_MOUSE_BLENDED
 @export var MAX_DISTANCE: float = 50
 @export var SMOOTH_SPEED: float = 1
 
 var target_position := Vector2.INF
 var fallback_target: Node = null
-
-func _ready():
-	fallback_target = target
 	
 	
 func _process(delta):
@@ -46,3 +46,7 @@ func change_target(new_target: Node) -> void:
 func _clear_target() -> void:
 	target = fallback_target
 	change_mode(MODES.TARGET_MOUSE_BLENDED)
+
+func reset() -> void:
+	target = null
+	fallback_target = null

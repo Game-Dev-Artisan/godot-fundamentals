@@ -839,6 +839,7 @@ pattern_5 = SubResource("TileMapPattern_mgoaj")
 pattern_6 = SubResource("TileMapPattern_bxb0y")
 
 [node name="World" type="Node2D"]
+process_mode = 1
 rotation = 0.000588424
 script = ExtResource("1_0qfss")
 water_color = SubResource("GradientTexture1D_knbla")

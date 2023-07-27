@@ -1,12 +1,17 @@
 extends CanvasLayer
 class_name UI
 
+signal start_game()
+signal menu_opened()
+signal menu_closed()
+signal quit_to_menu()
+
 @onready var score_label = %Score
 @onready var reload_progress = %ReloadProgress
-@onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
-@onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
 @onready var menu = %Menu
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var main_menu = %MainMenu
+@onready var transition = %Transition
 
 static var _instance: UI = null
 
@@ -23,8 +28,12 @@ func _ready():
 		
 		
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if !main_menu.visible and event.is_action_pressed("ui_cancel"):
 		menu.visible = !menu.visible
+		if menu.visible:
+			menu_opened.emit()
+		else:
+			menu_closed.emit()
 		
 		
 func _update_score_label():
@@ -44,14 +53,7 @@ func _on_reloaded() -> void:
 	reload_progress.value = 1
 
 
-func _on_music_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, linear_to_db(value))
-	AudioServer.set_bus_mute(MUSIC_BUS_ID, value < .05)
 
-
-func _on_sfx_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(SFX_BUS_ID, linear_to_db(value))
-	AudioServer.set_bus_mute(SFX_BUS_ID, value < .05)
 	
 	
 static func open_letterbox() -> void:
@@ -64,3 +66,30 @@ static func close_letterbox() -> void:
 	if _instance.letterbox_open:
 		_instance.animation_player.play_backwards("open_letterbox")
 		_instance.letterbox_open = false
+
+
+func _on_main_menu_start_game() -> void:
+	start_game.emit()
+	transition.show()
+	animation_player.play("screen_transition")
+	await animation_player.animation_finished
+	transition.hide()
+
+
+func _on_menu_main_menu():
+	if animation_player.is_playing():
+		await animation_player.animation_finished
+	menu.hide()
+	transition.show()
+	animation_player.play_backwards("screen_transition")
+	await animation_player.animation_finished
+	transition.hide()
+	quit_to_menu.emit()
+	main_menu.show()
+
+
+func _on_menu_return_to_game():
+	if animation_player.is_playing():
+		await animation_player.animation_finished
+	menu.hide()
+	menu_closed.emit()
