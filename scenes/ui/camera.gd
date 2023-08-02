@@ -16,16 +16,23 @@ var fallback_target: Node = null
 	
 	
 func _process(delta):
+	if !target:
+		return
+		
 	match(mode):
 		MODES.TARGET:
-			if target:
-				target_position = target.position
+			target_position = target.position
 		MODES.TARGET_MOUSE_BLENDED:
-			if target:
+			if Game.INPUT_SCHEME == Game.INPUT_SCHEMES.KEYBOARD_AND_MOUSE:
 				var mouse_pos := get_local_mouse_position()
 				target_position = (target.position + mouse_pos)
 				target_position.x = clamp(target_position.x, -MAX_DISTANCE + target.position.x, MAX_DISTANCE + target.position.x)
 				target_position.y = clamp(target_position.y, -MAX_DISTANCE + target.position.y, MAX_DISTANCE + target.position.y)
+			elif Game.INPUT_SCHEME == Game.INPUT_SCHEMES.GAMEPAD:
+				if target.crosshair:
+					target_position = target.crosshair.global_position
+				else:
+					target_position = target.position
 				
 	if target_position != Vector2.INF:
 		position = lerp(position, target_position, SMOOTH_SPEED * delta)

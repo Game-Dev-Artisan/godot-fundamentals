@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dts7spmsrfa7u"]
+[gd_scene load_steps=16 format=3 uid="uid://dts7spmsrfa7u"]
 
 [ext_resource type="Texture2D" uid="uid://blv2f3krb6k1a" path="res://assets/sprites/tank_body.png" id="1_pl8hv"]
 [ext_resource type="Script" path="res://scenes/entities/tank/tank.gd" id="1_wjan8"]
 [ext_resource type="AudioStream" uid="uid://bbohokntkdsdv" path="res://assets/audio/sfx/drive_water.wav" id="2_g4eqo"]
 [ext_resource type="PackedScene" uid="uid://coypybknrhnoa" path="res://scenes/entities/tank/weapon/weapon.tscn" id="3_m1eic"]
 [ext_resource type="AudioStream" uid="uid://dql6x2rmnpqha" path="res://assets/audio/sfx/drive_default.wav" id="4_pl0py"]
+[ext_resource type="Texture2D" uid="uid://brxvf2ftq2yn1" path="res://assets/sprites/cursor.png" id="6_r8dw4"]
 
 [sub_resource type="Animation" id="Animation_6sql1"]
 length = 0.001
@@ -118,6 +119,10 @@ hframes = 2
 
 [node name="Weapon" parent="." node_paths=PackedStringArray("tank") instance=ExtResource("3_m1eic")]
 tank = NodePath("..")
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_r8dw4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6ls1n")

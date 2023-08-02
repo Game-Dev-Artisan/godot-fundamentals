@@ -41,3 +41,9 @@ func _on_main_menu_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+
+
+func _on_input_type_button_item_selected(index):
+	if index != -1:
+		Game.INPUT_SCHEME = index
+		EventBus.input_scheme_changed.emit(index)

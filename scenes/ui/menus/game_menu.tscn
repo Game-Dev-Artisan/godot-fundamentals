@@ -76,19 +76,36 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../MusicSlider")
-focus_neighbor_bottom = NodePath("../../MainMenuButton")
-focus_next = NodePath("../../MainMenuButton")
+focus_neighbor_bottom = NodePath("../InputTypeButton")
+focus_next = NodePath("../InputTypeButton")
 focus_previous = NodePath("../MusicSlider")
 max_value = 1.0
 step = 0.05
 value = 1.0
 
+[node name="InputTypeLabel" type="Label" parent="MarginContainer/ButtonsVBox/GridContainer"]
+layout_mode = 2
+text = "Input Type"
+
+[node name="InputTypeButton" type="OptionButton" parent="MarginContainer/ButtonsVBox/GridContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../SFXSlider")
+focus_neighbor_bottom = NodePath("../../MainMenuButton")
+focus_next = NodePath("../../MainMenuButton")
+focus_previous = NodePath("../SFXSlider")
+item_count = 2
+selected = 0
+popup/item_0/text = "Keyboard"
+popup/item_0/id = 0
+popup/item_1/text = "Gamepad"
+popup/item_1/id = 1
+
 [node name="MainMenuButton" type="Button" parent="MarginContainer/ButtonsVBox"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../GridContainer/SFXSlider")
+focus_neighbor_top = NodePath("../GridContainer/InputTypeButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 focus_next = NodePath("../QuitButton")
-focus_previous = NodePath("../GridContainer/SFXSlider")
+focus_previous = NodePath("../GridContainer/InputTypeButton")
 text = "Return to menu"
 alignment = 0
 
@@ -105,5 +122,6 @@ alignment = 0
 [connection signal="pressed" from="MarginContainer/ButtonsVBox/ReturnToGameButton" to="." method="_on_return_to_game_button_pressed"]
 [connection signal="value_changed" from="MarginContainer/ButtonsVBox/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/ButtonsVBox/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="item_selected" from="MarginContainer/ButtonsVBox/GridContainer/InputTypeButton" to="." method="_on_input_type_button_item_selected"]
 [connection signal="pressed" from="MarginContainer/ButtonsVBox/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="MarginContainer/ButtonsVBox/QuitButton" to="." method="_on_quit_button_pressed"]

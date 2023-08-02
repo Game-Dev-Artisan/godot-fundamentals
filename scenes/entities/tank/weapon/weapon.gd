@@ -41,7 +41,8 @@ func fire():
 	# Set our state to reload and start our timer
 	change_state(STATES.RELOADING)
 	reload_timer.start()
-
+	if Game.INPUT_SCHEME == Game.INPUT_SCHEMES.GAMEPAD:
+		Input.start_joy_vibration(0, .1, 0, .5)
 
 func _on_reload_timer_timeout():
 	change_state(STATES.READY)

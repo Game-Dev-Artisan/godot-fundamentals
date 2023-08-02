@@ -14,7 +14,6 @@ WorldScene = ExtResource("1_2mp7s")
 ui = NodePath("UI")
 
 [node name="UI" parent="." instance=ExtResource("4_uclr4")]
-process_mode = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3

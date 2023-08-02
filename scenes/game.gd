@@ -10,6 +10,8 @@ class_name Game
 var tank: Tank
 var world: World
 
+enum INPUT_SCHEMES { KEYBOARD_AND_MOUSE, GAMEPAD, TOUCH_SCREEN }
+static var INPUT_SCHEME: INPUT_SCHEMES = INPUT_SCHEMES.KEYBOARD_AND_MOUSE
 
 func start_game():
 	world = WorldScene.instantiate()
