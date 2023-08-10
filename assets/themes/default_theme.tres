@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://65dakj0ukuj6"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://65dakj0ukuj6"]
 
 [ext_resource type="FontFile" uid="uid://dtywkluh6lms5" path="res://assets/fonts/Early GameBoy.ttf" id="1_7bvv0"]
 
@@ -12,6 +12,41 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42rn8"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oif5x"]
+bg_color = Color(0.176471, 0.207843, 0.254902, 0.862745)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaeg3"]
+bg_color = Color(0.176471, 0.207843, 0.254902, 0.862745)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biw10"]
+bg_color = Color(0.176471, 0.207843, 0.254902, 0.862745)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edu52"]
+bg_color = Color(0.176471, 0.207843, 0.254902, 0.862745)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8psjs"]
+bg_color = Color(0.176471, 0.207843, 0.254902, 0.862745)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
 [resource]
 default_font = ExtResource("1_7bvv0")
 default_font_size = 16
@@ -23,3 +58,9 @@ Button/styles/focus = SubResource("StyleBoxEmpty_7314y")
 Button/styles/hover = SubResource("StyleBoxEmpty_eqtds")
 Button/styles/normal = SubResource("StyleBoxEmpty_db648")
 Button/styles/pressed = SubResource("StyleBoxEmpty_42rn8")
+RemapButton/base_type = &"Button"
+RemapButton/styles/disabled = SubResource("StyleBoxFlat_oif5x")
+RemapButton/styles/focus = SubResource("StyleBoxFlat_yaeg3")
+RemapButton/styles/hover = SubResource("StyleBoxFlat_biw10")
+RemapButton/styles/normal = SubResource("StyleBoxFlat_edu52")
+RemapButton/styles/pressed = SubResource("StyleBoxFlat_8psjs")
