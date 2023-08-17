@@ -59,6 +59,7 @@ layout_mode = 2
 text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/ButtonsVBox/SettingsGridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -74,6 +75,7 @@ layout_mode = 2
 text = "SFX"
 
 [node name="SFXSlider" type="HSlider" parent="MarginContainer/ButtonsVBox/SettingsGridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -90,6 +92,7 @@ layout_mode = 2
 text = "Input Type"
 
 [node name="InputTypeButton" type="OptionButton" parent="MarginContainer/ButtonsVBox/SettingsGridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../SFXSlider")
 focus_neighbor_bottom = NodePath("../../MainMenuButton")

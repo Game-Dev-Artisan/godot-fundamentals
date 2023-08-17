@@ -1,6 +1,8 @@
 extends Button
 class_name RemapButton
 
+signal action_remapped(action, event)
+
 @export var action: String
 
 func _init():
@@ -28,6 +30,7 @@ func _unhandled_input(event):
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, event)
 		button_pressed = false
+		action_remapped.emit(action, event)
 	
 	
 func update_key_text():
