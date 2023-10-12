@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://65dakj0ukuj6"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://65dakj0ukuj6"]
 
 [ext_resource type="FontFile" uid="uid://dtywkluh6lms5" path="res://assets/fonts/Early GameBoy.ttf" id="1_7bvv0"]
 
@@ -40,13 +40,6 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8psjs"]
-bg_color = Color(0.176471, 0.207843, 0.254902, 0.862745)
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
 [resource]
 default_font = ExtResource("1_7bvv0")
 default_font_size = 16
@@ -63,4 +56,4 @@ RemapButton/styles/disabled = SubResource("StyleBoxFlat_oif5x")
 RemapButton/styles/focus = SubResource("StyleBoxFlat_yaeg3")
 RemapButton/styles/hover = SubResource("StyleBoxFlat_biw10")
 RemapButton/styles/normal = SubResource("StyleBoxFlat_edu52")
-RemapButton/styles/pressed = SubResource("StyleBoxFlat_8psjs")
+RemapButton/styles/pressed = null
